@@ -1,7 +1,11 @@
 export default function Home() {
      return (
           <div>
-               <h1 className="text-amber-600 text-4xl capitalize">hello world</h1>
+               <div className="flex flex-col items-center justify-center m-18">
+                    <h1 className="title">Yuri Romeu</h1>
+                    <h1 className="title">Front-end</h1>
+                    <h1 className="title">Developer</h1>
+               </div>
           </div>
      );
 }
