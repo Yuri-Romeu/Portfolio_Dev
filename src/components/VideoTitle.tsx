@@ -4,21 +4,47 @@ interface VideoTitleProps {
 }
 
 export default function VideoTitle({ title, video }: VideoTitleProps) {
-     return (
-          <div className="relative h-full overflow-hidden isolate">
-               <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover z-0"
-               >
-                    <source src={video} type="video/mp4" />
-               </video>
+     const maskId = `video-text-mask-${title.toLowerCase().replace(/\s+/g, '-')}`;
 
-               <div className="relative z-10 text-white text-center">
-                    <h1 className="text-9xl font-bold uppercase">{title}</h1>
-               </div>
+     return (
+          <div className="w-full max-w-[1200px] mx-auto leading-none">
+               <svg
+                    viewBox="0 0 1200 170"
+                    className="w-full h-auto block"
+                    role="img"
+                    aria-label={title}
+                    preserveAspectRatio="xMidYMid meet"
+               >
+                    <defs>
+                         <mask id={maskId}>
+                              <rect width="1200" height="170" fill="black" />
+                              <text
+                                   x="600"
+                                   y="128"
+                                   textAnchor="middle"
+                                   fill="white"
+                                   fontSize="128"
+                                   fontWeight="700"
+                                   letterSpacing="2"
+                              >
+                                   {title.toUpperCase()}
+                              </text>
+                         </mask>
+                    </defs>
+
+                    <foreignObject x="0" y="0" width="1200" height="170" mask={`url(#${maskId})`}>
+                         <video
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="auto"
+                              className="w-full h-full object-cover"
+                         >
+                              <source src={video} type="video/mp4" />
+                         </video>
+                    </foreignObject>
+               </svg>
           </div>
      );
 }
