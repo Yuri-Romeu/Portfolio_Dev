@@ -55,3 +55,50 @@ body {
           background-position: 22px 26px;
      }
 }
+
+.custom-cursor {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 28px;
+     height: 28px;
+     border: 1px solid #ffffff;
+     border-radius: 9999px;
+     pointer-events: none;
+     z-index: 9999;
+     opacity: 0;
+     transition: opacity 0.2s ease;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.custom-cursor-dot {
+     width: 6px;
+     height: 6px;
+     border-radius: 9999px;
+     background: #ffffff;
+     will-change: transform;
+}
+
+@media (pointer: fine) {
+     body,
+     a,
+     button,
+     [role='button'],
+     input,
+     textarea,
+     select {
+          cursor: none !important;
+     }
+
+     .custom-cursor {
+          opacity: 1;
+     }
+}
+
+@media (pointer: coarse) {
+     .custom-cursor {
+          display: none;
+     }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Cursor from '@/src/components/Cursor';
 import './globals.css';
 
 const inter = Inter({
@@ -19,7 +20,8 @@ export default function RootLayout({
 }>) {
      return (
           <html lang="pt-br" className={`${inter.variable} h-full antialiased`}>
-               <body className="min-h-full flex flex-col relative isolate overflow-x-hidden">
+               <body className="min-h-full flex flex-col relative isolate overflow-x-hidden cursor-default">
+                    <Cursor />
                     <div className="noise" aria-hidden="true" />
                     <div className="relative z-10">{children}</div>
                </body>
